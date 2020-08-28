@@ -17,17 +17,14 @@ import Teaser from 'components/Teaser';
 import videos from 'config/videos.json';
 import { knuth } from 'utils';
 
+const items = knuth(videos) as Video[];
+
 const Home = (): JSX.Element => {
   const [modal, toggleModal] = useState(false);
   const allCountries = 'All';
   const [country, setCountry] = useState(allCountries);
-  const [items, setItems] = useState<Video[]>(videos);
   const [currentVideo, setCurrentVideo] = useState<Video | null>(videos[0]);
   const { dark } = useContext(DarkModeContext);
-
-  useEffect(() => {
-    setItems(knuth(videos) as Video[]);
-  }, []);
 
   return (
     <div tw="container relative mx-auto px-6">
