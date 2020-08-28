@@ -30,6 +30,5 @@ yarn-error.log*
 
 # test
 cypress/videos
-tailwind.config.js
 
 .vercel
