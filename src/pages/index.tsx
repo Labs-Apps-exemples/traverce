@@ -12,6 +12,7 @@ import { DarkModeContext } from 'components/DarkMode/DarkModeProvider';
 import Iframe from 'components/Iframe';
 import Modal from 'components/Modal';
 import Select from 'components/Select';
+import SEO from 'components/SEO';
 import Teaser from 'components/Teaser';
 import videos from 'config/videos.json';
 import { knuth } from 'utils';
@@ -31,6 +32,7 @@ const Home = (): JSX.Element => {
   return (
     <div tw="container relative mx-auto px-6">
       <DarkMode />
+      <SEO />
 
       <header tw="mt-20">
         <h1 tw="sr-only">Traverce</h1>
@@ -62,9 +64,7 @@ const Home = (): JSX.Element => {
             )}
           </AnimatePresence>
         </div>
-        <h2 tw="mt-4 text-sm text-gray-500 italic">
-          COVID-19 compliant travel
-        </h2>
+        <h2 tw="mt-4 text-sm text-gray-500 italic">COVID compliant travel</h2>
       </header>
 
       <p tw="w-full md:w-1/2 text-lg mt-20">
