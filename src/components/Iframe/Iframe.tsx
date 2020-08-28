@@ -8,21 +8,7 @@ import { getYoutubeId } from 'utils';
 
 const youtubeOptions = {
   playerVars: {
-    disablekb: 1,
-    loop: 1,
-    fs: 0,
-    enablejsapi: 1,
-    autoplay: 0,
-    controls: 0,
-    showinfo: 0,
-    modestbranding: 1,
-    frameborder: 0,
-    rel: 0,
-    mute: 1,
-    autohide: 1,
-    vq: 'large',
-    version: '3',
-    theme: 'light',
+    autoplay: 1,
   },
 };
 
@@ -30,18 +16,14 @@ interface Props {
   enabled?: boolean;
   hidden?: boolean;
   src: string;
-  ratio?: string;
   isYouTube?: boolean;
 }
 
-const Iframe = ({
-  enabled,
-  hidden,
-  src,
-  ratio,
-  isYouTube,
-}: Props): JSX.Element => (
-  <div tw="relative overflow-hidden bg-black" style={{ paddingTop: ratio }}>
+const Iframe = ({ enabled, hidden, src, isYouTube }: Props): JSX.Element => (
+  <div
+    tw="relative overflow-hidden bg-black mx-auto flex-initial rounded-md"
+    style={{ width: '90vmin', height: '50.625vmin' }}
+  >
     {enabled && !isYouTube && (
       <iframe
         src={src}
@@ -66,7 +48,7 @@ const Iframe = ({
     {enabled && isYouTube && (
       <YouTube
         videoId={getYoutubeId(src)}
-        {...youtubeOptions}
+        opts={youtubeOptions}
         tw="
           absolute
           top-0
@@ -84,7 +66,6 @@ const Iframe = ({
 );
 
 Iframe.defaultProps = {
-  ratio: '56.25%',
   enabled: true,
   isYouTube: true,
   hidden: false,

@@ -1,0 +1,91 @@
+/** @jsx jsx */
+import React, { useEffect, useState } from 'react';
+import { ChevronDown } from 'react-feather';
+import { jsx } from '@emotion/core';
+import { motion } from 'framer-motion';
+import tw from 'twin.macro';
+
+interface Props {
+  items: string[];
+  initial?: string;
+  onSelect(item: string): void;
+}
+
+const Select = ({ items, initial, onSelect }: Props): JSX.Element => {
+  const [open, setOpen] = useState(false);
+  const [current, setCurrent] = useState(initial);
+
+  useEffect(() => {
+    if (current) onSelect(current);
+  }, [current, onSelect]);
+
+  return (
+    <div tw="relative inline-block text-left">
+      <button
+        type="button"
+        tw="inline-flex justify-between w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium focus:outline-none hover:border-blue-300 active:bg-gray-100 transition ease-in-out duration-150"
+        id="options-menu"
+        aria-haspopup="true"
+        aria-expanded="true"
+        onClick={() => setOpen(o => !o)}
+      >
+        {current}
+        <motion.span
+          tw="-mr-1 ml-2"
+          variants={{
+            open: { rotate: 180, y: 1 },
+            closed: { rotate: 0, y: 1 },
+          }}
+          initial="closed"
+          animate={open ? 'open' : 'closed'}
+          transition={{ duration: 0.15, ease: 'easeInOut' }}
+        >
+          <ChevronDown size={16} />
+        </motion.span>
+      </button>
+
+      <motion.div
+        variants={{
+          open: { opacity: 1, scale: 1 },
+          closed: { opacity: 0, scale: 0.95 },
+        }}
+        initial="closed"
+        animate={open ? 'open' : 'closed'}
+        transition={{ duration: 0.15, ease: 'easeInOut' }}
+        tw="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg z-50"
+      >
+        <div
+          tw="rounded-md bg-white shadow-xs overflow-y-auto"
+          css={{ maxHeight: '45vh' }}
+        >
+          <div
+            tw="py-1"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="options-menu"
+          >
+            {items.map((item, i) => (
+              <button
+                type="button"
+                tw="w-full text-left block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                onClick={() => {
+                  setCurrent(item);
+                  setOpen(false);
+                }}
+                key={`item-${i}`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+Select.initialProps = {
+  initial: 'All',
+};
+
+export default Select;
