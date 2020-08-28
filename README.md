@@ -1,13 +1,24 @@
-This example shows how to integrate the TypeScript type system into Next.js. Since TypeScript is supported out of the box with Next.js, all we have to do is to install TypeScript.
+# traverce
 
-This example shows how to properly export and import typescript types without getting the
+> COVID compliant travel
 
-```js
-Attempted import error: 'TypeA' is not exported from './package-1'.
+## Contribute
+
+You can submit your contribution to improve the experience of **traverce.net** by submitting your pull requests.
+
+## Install
+
+**Requirement**:
+
+- [📗 NodeJS 10+](https://nodejs.org/en/)
+- [🐈 Yarn](https://yarnpkg.com/lang/en/)
+
+```bash
+$ yarn
 ```
 
-error as raised in [vercel/next.js#7882](https://github.com/vercel/next.js/issues/7882).
+## Run
 
-## Useful links
-
-[Add import type and export type support to TypeScript](https://github.com/babel/babel/pull/11171)
+```bash
+$ yarn dev
+```
