@@ -6,12 +6,6 @@ import tw from 'twin.macro';
 
 import { getYoutubeId } from 'utils';
 
-const youtubeOptions = {
-  playerVars: {
-    autoplay: 1,
-  },
-};
-
 interface Props {
   enabled?: boolean;
   hidden?: boolean;
@@ -48,7 +42,11 @@ const Iframe = ({ enabled, hidden, src, isYouTube }: Props): JSX.Element => (
     {enabled && isYouTube && (
       <YouTube
         videoId={getYoutubeId(src)}
-        opts={youtubeOptions}
+        opts={{
+          playerVars: {
+            autoplay: 1,
+          },
+        }}
         tw="
           absolute
           top-0

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { jsx } from '@emotion/core';
 import { motion } from 'framer-motion';
 import tw from 'twin.macro';
@@ -14,6 +14,17 @@ interface Props {
 
 const Modal = ({ open, children, onClose }: Props): JSX.Element => {
   const { dark } = useContext(DarkModeContext);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      document.onkeydown = function (e) {
+        e = e || window.event;
+        if (e.keyCode === 27) {
+          onClose();
+        }
+      };
+    }
+  }, []);
 
   return (
     <motion.div

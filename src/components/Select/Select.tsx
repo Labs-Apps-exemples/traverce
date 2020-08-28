@@ -61,6 +61,7 @@ const Select = ({ items, initial, onSelect }: Props): JSX.Element => {
         animate={open ? 'open' : 'closed'}
         transition={{ duration: 0.15, ease: 'easeInOut' }}
         tw="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg z-50"
+        css={!open && tw`pointer-events-none`}
       >
         <div
           tw="rounded-md shadow-xs overflow-y-auto"

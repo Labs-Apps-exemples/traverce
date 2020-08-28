@@ -20,12 +20,12 @@ const Home = (): JSX.Element => {
   const [modal, toggleModal] = useState(false);
   const allCountries = 'All';
   const [country, setCountry] = useState(allCountries);
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<Video[]>(videos);
   const [currentVideo, setCurrentVideo] = useState<Video | null>(videos[0]);
   const { dark } = useContext(DarkModeContext);
 
   useEffect(() => {
-    setItems(knuth(videos));
+    setItems(knuth(videos) as Video[]);
   }, []);
 
   return (

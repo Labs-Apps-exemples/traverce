@@ -1,6 +1,6 @@
 import { isNil } from 'ramda';
 
-const knuth = (array: array): array => {
+const knuth = (array: Array<unknown>): Array<unknown> => {
   if (isNil(array)) return array;
   let index = array.length;
 

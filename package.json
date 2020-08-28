@@ -20,6 +20,7 @@
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "@types/ramda": "^0.27.14",
+    "@types/react-lazyload": "^2.6.0",
     "framer-motion": "^2.6.1",
     "next": "latest",
     "ramda": "^0.27.1",
