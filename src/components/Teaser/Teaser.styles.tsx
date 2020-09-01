@@ -25,6 +25,6 @@ export const imageWraper = css`
   }
 
   &:hover > div:first-of-type:after {
-    box-shadow: inset 0px 0px 150px 60px rgba(0, 0, 0, 0);
+    box-shadow: inset 0px 0px 50px 60px rgba(0, 0, 0, 0);
   }
 `;

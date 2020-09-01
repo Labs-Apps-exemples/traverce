@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ExternalLink, Heart } from 'react-feather';
 import { css, jsx } from '@emotion/core';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -18,6 +18,8 @@ import videos from 'config/videos.json';
 import { knuth } from 'utils';
 
 const items = knuth(videos) as Video[];
+
+// const items = reverse(videos) as Video[];
 
 const Home = (): JSX.Element => {
   const [modal, toggleModal] = useState(false);
